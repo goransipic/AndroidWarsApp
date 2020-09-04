@@ -9,5 +9,35 @@
         android:id="@+id/validationFragment"
         tools:layout="@layout/validation_fragment"
         android:name="hr.goodapp.warsapp.ui.validation.ValidationFragment"
-        android:label="WarsApp" />
+        android:label="WarsApp" >
+        <action
+            android:id="@+id/action_validationFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_validationFragment_to_RNGFragment"
+            app:destination="@id/RNGFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="hr.goodapp.warsapp.ui.main.MainFragment"
+        android:label="Main"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="hr.goodapp.warsapp.ui.detail.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" />
+    <fragment
+        android:id="@+id/RNGFragment"
+        android:name="hr.goodapp.warsapp.ui.rng.RNGFragment"
+        android:label="rngfragment"
+        tools:layout="@layout/rngfragment" />
 </navigation>

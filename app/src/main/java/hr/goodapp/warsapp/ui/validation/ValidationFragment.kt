@@ -19,10 +19,16 @@ class ValidationFragment : Fragment(R.layout.validation_fragment) {
     private val viewBinding by viewBinding(ValidationFragmentBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        viewBinding.toolbar
-            .setupWithNavController(navController, appBarConfiguration)
+
+        viewBinding.login.setOnClickListener {
+            findNavController().navigate(R.id.action_validationFragment_to_mainFragment)
+        }
+
+        viewBinding.rng.setOnClickListener {
+            findNavController().navigate(R.id.action_validationFragment_to_RNGFragment)
+        }
+
+
     }
 }
