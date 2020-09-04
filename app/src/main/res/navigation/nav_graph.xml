@@ -13,13 +13,24 @@
         <action
             android:id="@+id/action_validationFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_validationFragment_to_RNGFragment"
-            app:destination="@id/RNGFragment" />
+            app:destination="@id/RNGFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_validationFragment_to_languageFragment"
+            app:destination="@id/languageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -38,6 +49,11 @@
     <fragment
         android:id="@+id/RNGFragment"
         android:name="hr.goodapp.warsapp.ui.rng.RNGFragment"
-        android:label="rngfragment"
+        android:label="Rnb"
         tools:layout="@layout/rngfragment" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="hr.goodapp.warsapp.ui.language.LanguageFragment"
+        android:label="@string/language"
+        tools:layout="@layout/language_fragment" />
 </navigation>
