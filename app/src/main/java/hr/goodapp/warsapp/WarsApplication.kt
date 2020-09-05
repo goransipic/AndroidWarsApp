@@ -2,8 +2,9 @@ package hr.goodapp.warsapp
 
 import android.app.Application
 import android.content.Context
-import hr.goodapp.warsapp.ui.common.LocalizationUtil
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class WarsApplication : Application() {
 
     companion object {
