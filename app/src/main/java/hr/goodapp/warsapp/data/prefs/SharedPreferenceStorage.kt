@@ -37,7 +37,7 @@ class SharedPreferenceStorage @Inject constructor(@ApplicationContext context: C
 
     private val changeListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         when (key) {
-            //PREF_LANGUAGE -> Toast.makeText(context,key, Toast.LENGTH_LONG).show()
+            PREF_LANGUAGE -> Toast.makeText(context,context.getString(R.string.language_updated), Toast.LENGTH_SHORT).show()
         }
     }
 
