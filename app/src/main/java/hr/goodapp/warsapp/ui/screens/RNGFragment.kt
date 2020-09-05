@@ -1,12 +1,10 @@
-package hr.goodapp.warsapp.ui.rng
+package hr.goodapp.warsapp.ui.screens
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import hr.goodapp.warsapp.R
+import hr.goodapp.warsapp.ui.viewmodels.RNGViewModel
 
 class RNGFragment : Fragment(R.layout.rngfragment) {
 

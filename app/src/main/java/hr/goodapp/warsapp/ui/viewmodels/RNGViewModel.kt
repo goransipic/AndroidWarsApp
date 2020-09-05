@@ -1,4 +1,4 @@
-package hr.goodapp.warsapp.ui.rng
+package hr.goodapp.warsapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 
