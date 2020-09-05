@@ -2,6 +2,7 @@
     <string name="app_name">AndroidWarsApp</string>
     <string name="hint">Hint</string>
     <string name="language">Language</string>
+    <string name="language_placeholder" translatable="false">-</string>
     <string name="rng">RNG</string>
     <string name="login">Login</string>
     <string name="english">English</string>

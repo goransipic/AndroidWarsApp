@@ -32,9 +32,9 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
         }
 
         viewModel.viewStateData.observe(viewLifecycleOwner) {
-            viewBinding.language.text = it.selectedLanguage.language
+            viewBinding.language.text = it.selectedLanguage
         }
 
-
+        viewModel.refreshLanguage()
     }
 }

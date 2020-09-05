@@ -33,8 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
     override fun attachBaseContext(newBase: Context) {
         // TODO Hilt can not injected SharedPreferences in this function
-        if (SharedPreferenceStorage(WarsApplication.ctx).currentLanguage != "-"){
-            super.attachBaseContext(LocalizationUtil.applyLanguageContext(newBase, SharedPreferenceStorage(WarsApplication.ctx).currentLanguage))
+        val currentLanguage = SharedPreferenceStorage(WarsApplication.ctx).currentLanguage
+        val applicationContext = WarsApplication.ctx.getString(R.string.language_placeholder)
+        if ( currentLanguage != applicationContext){
+            super.attachBaseContext(LocalizationUtil.applyLanguageContext(newBase, currentLanguage))
         }else{
             super.attachBaseContext(newBase)
         }

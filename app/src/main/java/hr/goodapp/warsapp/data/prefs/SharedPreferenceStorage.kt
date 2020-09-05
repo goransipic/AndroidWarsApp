@@ -12,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import hr.goodapp.warsapp.R
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.properties.ReadWriteProperty
@@ -40,7 +41,7 @@ class SharedPreferenceStorage @Inject constructor(@ApplicationContext context: C
         }
     }
 
-    override var currentLanguage by StringPreference(prefs, PREF_LANGUAGE, "-")
+    override var currentLanguage by StringPreference(prefs, PREF_LANGUAGE, context.getString(R.string.language_placeholder))
 
     companion object {
         const val PREFS_NAME = "warsapp"
@@ -80,7 +81,7 @@ class StringPreference(
     }
 
     override fun setValue(thisRef: Any, property: KProperty<*>, value: String) {
-        preferences.value.edit { putString(name, value) }
+        preferences.value.edit(true) { putString(name, value) }
     }
 }
 

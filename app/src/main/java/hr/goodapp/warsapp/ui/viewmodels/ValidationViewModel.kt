@@ -1,21 +1,21 @@
 package hr.goodapp.warsapp.ui.viewmodels
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
+import hr.goodapp.warsapp.data.prefs.PreferenceStorage
 
-class ValidationViewModel : ViewModel() {
+class ValidationViewModel @ViewModelInject constructor(
+    private val preferenceStorage: PreferenceStorage,
+) : ViewModel()  {
 
-    val viewStateData = MutableLiveData<CurrentLanguage>()
+    private val refreshLanguage: MutableLiveData<Boolean> = MutableLiveData()
+    val viewStateData = refreshLanguage.switchMap { liveData { emit(CurrentLanguage(preferenceStorage.currentLanguage)) } }
 
-    init {
-        viewStateData.postValue(CurrentLanguage(Language.DEFAULT))
+    fun refreshLanguage() {
+        refreshLanguage.value = true
     }
 }
 
 sealed class ValidationViewState
 
-data class CurrentLanguage(val selectedLanguage : Language) : ValidationViewState()
-
-enum class Language(val language : String) {
-    DEFAULT("-"),ENGLISH("English"), CROATIAN("Croatian")
-}
+data class CurrentLanguage(val selectedLanguage : String) : ValidationViewState()

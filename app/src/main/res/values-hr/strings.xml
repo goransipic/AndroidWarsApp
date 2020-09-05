@@ -3,7 +3,7 @@
     <string name="hint">Hint</string>
     <string name="language">Jezik</string>
     <string name="rng">RNG</string>
-    <string name="login">LoginHrvatski</string>
+    <string name="login">Login</string>
     <string name="english">Engleski</string>
     <string name="croatian">Hrvatski</string>
 </resources>
