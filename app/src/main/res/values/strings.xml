@@ -4,4 +4,6 @@
     <string name="language">Language</string>
     <string name="rng">RNG</string>
     <string name="login">Login</string>
+    <string name="english">English</string>
+    <string name="croatian">Croatian</string>
 </resources>
