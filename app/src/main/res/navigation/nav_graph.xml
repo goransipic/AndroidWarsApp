@@ -50,7 +50,12 @@
         android:id="@+id/RNGFragment"
         android:name="hr.goodapp.warsapp.ui.screens.RNGFragment"
         android:label="Rnb"
-        tools:layout="@layout/rngfragment" />
+        tools:layout="@layout/rngfragment" >
+        <argument
+            android:name="inputText"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/languageFragment"
         android:name="hr.goodapp.warsapp.ui.screens.LanguageFragment"
