@@ -7,10 +7,8 @@ import androidx.annotation.WorkerThread
 import androidx.core.content.edit
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import hr.goodapp.warsapp.R
 import javax.inject.Inject
@@ -22,10 +20,10 @@ const val ENGLISH_LANGUAGE = "en"
 const val CROATIAN_LANGUAGE = "hr"
 
 /**
- * [PreferenceStorage] impl backed by [android.content.SharedPreferences].
+ * [IPreferenceStorage] impl backed by [android.content.SharedPreferences].
  */
 @Singleton
-class SharedPreferenceStorage @Inject constructor(@ApplicationContext context: Context) : PreferenceStorage {
+class SharedPreferenceStorage @Inject constructor(@ApplicationContext context: Context) : IPreferenceStorage {
 
     private val prefs: Lazy<SharedPreferences> = lazy { // Lazy to prevent IO access to main thread.
         context.applicationContext.getSharedPreferences(
@@ -83,14 +81,4 @@ class StringPreference(
     override fun setValue(thisRef: Any, property: KProperty<*>, value: String) {
         preferences.value.edit(true) { putString(name, value) }
     }
-}
-
-@Module
-@InstallIn(ActivityComponent::class)
-abstract class PreferenceModule {
-
-    @Binds
-    abstract fun bindPreferenceStorage(
-        sharedPreferenceStorage: SharedPreferenceStorage
-    ): PreferenceStorage
 }

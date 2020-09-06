@@ -2,16 +2,16 @@ package hr.goodapp.warsapp.ui.viewmodels
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import hr.goodapp.warsapp.data.prefs.PreferenceStorage
+import hr.goodapp.warsapp.data.prefs.IPreferenceStorage
 
 class LanguageViewModel @ViewModelInject constructor(
-    private val preferenceStorage: PreferenceStorage,
+    private val IPreferenceStorage: IPreferenceStorage,
 ) : ViewModel() {
 
     var currentLanguage : String
-        get() = preferenceStorage.currentLanguage
+        get() = IPreferenceStorage.currentLanguage
         set(value) {
-            preferenceStorage.currentLanguage = value
+            IPreferenceStorage.currentLanguage = value
         }
 
 }

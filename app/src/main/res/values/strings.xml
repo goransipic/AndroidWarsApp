@@ -8,4 +8,7 @@
     <string name="english">English</string>
     <string name="croatian">Croatian</string>
     <string name="language_updated" translatable="false">Language updated</string>
+    <string name="no_data_to_show">No Data to Show</string>
+    <string name="generate_number">Generate Number</string>
+    <string name="return_result">Return Result</string>
 </resources>

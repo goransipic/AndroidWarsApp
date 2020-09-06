@@ -1,6 +1,8 @@
 package hr.goodapp.warsapp.ui.screens
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -58,8 +60,9 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
         val savedStateHandle = currentBackStackEntry.savedStateHandle
 
         savedStateHandle.getLiveData<String>(RETURN_RESULT)
-            .observe(currentBackStackEntry, Observer { success ->
-                Toast.makeText(requireContext(), success, Toast.LENGTH_SHORT).show()
+            .observe(viewLifecycleOwner, Observer { success ->
+                viewBinding.textInputLayout.editText?.text = SpannableStringBuilder(success)
+                //Toast.makeText(requireContext(), success, Toast.LENGTH_SHORT).show()
                 savedStateHandle.remove<String>(RETURN_RESULT)
             })
     }

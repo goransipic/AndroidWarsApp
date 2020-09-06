@@ -3,7 +3,7 @@ package hr.goodapp.warsapp.data.prefs
 /**
  * Storage for app and user preferences.
  */
-interface PreferenceStorage {
+interface IPreferenceStorage {
     var currentLanguage: String
 }
 
