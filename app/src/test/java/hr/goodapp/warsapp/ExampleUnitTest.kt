@@ -1,5 +1,6 @@
 package hr.goodapp.warsapp
 
+import hr.goodapp.warsapp.ui.common.InputValidator
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +12,8 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun inputValidator_CorrectInput_returnsTrue() {
+        val inputValidator = InputValidator()
+        inputValidator.checkInput("")
     }
 }

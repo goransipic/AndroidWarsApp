@@ -5,6 +5,7 @@ import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -45,6 +46,14 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
 
         viewModel.viewStateData.observe(viewLifecycleOwner) {
             viewBinding.language.text = it.selectedLanguage
+        }
+
+        viewBinding.textInputLayout.editText?.doOnTextChanged { text, _, _, _, ->
+           if (viewModel.checkInput(text.toString())){
+               Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
+           }else{
+               Toast.makeText(requireContext(), "NOK", Toast.LENGTH_SHORT).show()
+           }
         }
 
         viewModel.refreshLanguage()

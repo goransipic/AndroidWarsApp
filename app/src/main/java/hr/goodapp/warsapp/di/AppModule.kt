@@ -9,7 +9,8 @@ import hr.goodapp.warsapp.data.prefs.IPreferenceStorage
 import hr.goodapp.warsapp.data.prefs.SharedPreferenceStorage
 import hr.goodapp.warsapp.data.randomnumbers.IRandomNumbersDataSource
 import hr.goodapp.warsapp.data.randomnumbers.LocalRandomNumbersDataSource
-import javax.inject.Singleton
+import hr.goodapp.warsapp.ui.common.*
+import javax.inject.Qualifier
 
 @Module
 @InstallIn(ApplicationComponent::class)
