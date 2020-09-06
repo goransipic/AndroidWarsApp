@@ -32,23 +32,23 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewBinding.login.setOnClickListener {
+        viewBinding.views.login.setOnClickListener {
             findNavController().navigate(R.id.action_validationFragment_to_mainFragment)
         }
 
-        viewBinding.rng.setOnClickListener {
-            findNavController().navigate(ValidationFragmentDirections.actionValidationFragmentToRNGFragment(viewBinding.textInputLayout.editText?.text.toString()))
+        viewBinding.views.rng.setOnClickListener {
+            findNavController().navigate(ValidationFragmentDirections.actionValidationFragmentToRNGFragment(viewBinding.views.textInputLayout.editText?.text.toString()))
         }
 
-        viewBinding.language.setOnClickListener {
+        viewBinding.views.language.setOnClickListener {
             findNavController().navigate(R.id.action_validationFragment_to_languageFragment)
         }
 
         viewModel.viewStateData.observe(viewLifecycleOwner) {
-            viewBinding.language.text = it.selectedLanguage
+            viewBinding.views.language.text = it.selectedLanguage
         }
 
-        viewBinding.textInputLayout.editText?.doOnTextChanged { text, _, _, _, ->
+        viewBinding.views.textInputLayout.editText?.doOnTextChanged { text, _, _, _, ->
            if (viewModel.checkInput(text.toString())){
                Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
            }else{
@@ -70,7 +70,7 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
 
         savedStateHandle.getLiveData<String>(RETURN_RESULT)
             .observe(viewLifecycleOwner, Observer { success ->
-                viewBinding.textInputLayout.editText?.text = SpannableStringBuilder(success)
+                viewBinding.views.textInputLayout.editText?.text = SpannableStringBuilder(success)
                 //Toast.makeText(requireContext(), success, Toast.LENGTH_SHORT).show()
                 savedStateHandle.remove<String>(RETURN_RESULT)
             })
