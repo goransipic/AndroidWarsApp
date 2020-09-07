@@ -1,16 +1,24 @@
 package hr.goodapp.warsapp.ui.common
 
+import android.app.ProgressDialog
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import hr.goodapp.warsapp.R
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.DiffAdapter
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.DisplayableItem
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.EmptyDataItem
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.SetItemHeightItem
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 
 val Int.dp: Int
@@ -59,4 +67,49 @@ fun RecyclerView.initDiffAdapter(): DiffAdapterResult {
     val dslAdapter = getDiffDSLAdapter()
     adapter = dslAdapter.adapter
     return dslAdapter
+}
+
+fun <T> ViewModel.launchLiveData(block: suspend () -> T) = liveData {
+    try {
+        emit(Resource.forLoading())
+        val t = withContext(Dispatchers.Default) { block() }
+        emit(Resource.forSuccess(t))
+    } catch (e: Throwable) {
+        Timber.e(e)
+        emit(Resource.forFailure(e))
+    }
+}
+
+fun Fragment.getProgressBar(): ProgressDialog {
+    val progress = ProgressDialog(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
+    progress.setMessage(getString(R.string.please_wait))
+    progress.isIndeterminate = true
+    progress.setCancelable(false)
+    progress.setOnCancelListener(null)
+
+    return progress
+}
+
+fun <T> Fragment.listenLiveData(
+    liveData: LiveData<Resource<T>>,
+    onLoading: () -> Unit = { view?.findViewById<View>(R.id.loadingView)?.visibility = View.VISIBLE },
+    onFailure: (Throwable) -> Boolean = { false },
+    onSuccess: (T) -> Unit
+) {
+    liveData.observe(
+        viewLifecycleOwner,
+        Observer {
+            when(it.state){
+                State.SUCCESS ->  {view?.findViewById<View>(R.id.loadingView)?.visibility = View.GONE
+                                   onSuccess(it.value!!)}
+                State.FAILURE ->  onFailure(it.exception!!)
+                State.LOADING ->  onLoading()}
+        })
+}
+
+fun <T> Fragment.listenEventData(liveData: LiveData<Event<T>>, tempResult: (T) -> Unit) {
+
+    liveData.observe(viewLifecycleOwner, EventObserver {
+        tempResult(it)
+    })
 }

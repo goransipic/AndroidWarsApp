@@ -12,4 +12,5 @@
     <string name="generate_number">Generate Number</string>
     <string name="return_result">Return Result</string>
     <string name="empty_text">There is nothing here</string>
+    <string name="please_wait">Please wait</string>
 </resources>
