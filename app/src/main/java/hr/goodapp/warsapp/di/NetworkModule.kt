@@ -7,6 +7,8 @@ import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ApplicationComponent
 import hr.goodapp.warsapp.BuildConfig
 import hr.goodapp.warsapp.data.people.PeopleDataSource
+import hr.goodapp.warsapp.data.people.remote.PeopleDao
+import hr.goodapp.warsapp.data.people.remote.PeopleRemoteDataSource
 import hr.goodapp.warsapp.ui.common.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,14 +35,20 @@ object NetworkModule {
     }
 
     @Provides
-    fun providePeopleDataSource(okHttpClient: OkHttpClient ): PeopleDataSource {
+    fun providePeopleDataSource(okHttpClient: OkHttpClient ): PeopleDao {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BuildConfig.API_URL_BASE)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(PeopleDataSource::class.java)
+            .create(PeopleDao::class.java)
     }
+
+    @Provides
+    fun providePeopleRemoteDataSource(peopleDao: PeopleDao): PeopleDataSource {
+        return PeopleRemoteDataSource(peopleDao)
+    }
+
     /*@Provides
     fun provideInputValidators(): List<ICheckInput> {
         return listOf(
