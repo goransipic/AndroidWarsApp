@@ -11,7 +11,6 @@ import hr.goodapp.warsapp.databinding.MainFragmentBinding
 import hr.goodapp.warsapp.ui.common.*
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.CardDelegateItem
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.SetItemHeightItem
-import hr.goodapp.warsapp.ui.common.adaptersdelegates.ThreeRowItem
 import hr.goodapp.warsapp.ui.viewmodels.MainViewModel
 
 class MainFragment : BaseFragment(R.layout.main_fragment) {

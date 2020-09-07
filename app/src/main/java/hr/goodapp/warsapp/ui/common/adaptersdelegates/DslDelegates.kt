@@ -1,6 +1,5 @@
 package hr.goodapp.warsapp.ui.common.adaptersdelegates
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -15,35 +14,6 @@ import hr.goodapp.warsapp.databinding.SetItemHeightBinding
 import hr.goodapp.warsapp.databinding.ThirdColumnItemBinding
 import hr.goodapp.warsapp.ui.common.Event
 import hr.goodapp.warsapp.ui.common.px
-
-fun twoRowAdapterDelegate(liveData: MutableLiveData<Event<Any>>) =
-    adapterDelegate<ThreeRowItem, DisplayableItem>(R.layout.third_column_item) {
-        val binding = ThirdColumnItemBinding.bind(itemView)
-
-        itemView.setOnClickListener {
-            liveData.postValue(Event(item))
-        }
-
-        bind {
-            binding.textView.text = item.first
-        }
-    }
-
-data class ThreeRowItem(val first: String,
-                        val second: String,
-                        val third: String,
-                        val payload: Any? = null,
-                        @DrawableRes val placeholder: Int = R.drawable.ic_launcher_background) :
-    DisplayableItem {
-    override fun getItemId(): Long {
-        return first.hashCode().toLong()
-    }
-
-    override fun getItemHash(): Int {
-        return hashCode()
-    }
-}
-
 
 fun emptyDelegate() =
     adapterDelegate<EmptyDataItem, DisplayableItem>(R.layout.empty_data) {
@@ -88,9 +58,9 @@ fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<
     }
 
     bind {
-        binding.cardLayoutEmbed.textView.text = item.first
-        binding.cardLayoutEmbed.textView4.text = item.second
-        binding.cardLayoutEmbed.imageView3.setImageResource(item.image)
+        binding.cardLayoutEmbed.textViewFirst.text = item.first
+        binding.cardLayoutEmbed.textViewSecond.text = item.second
+        binding.cardLayoutEmbed.imageView.setImageResource(item.image)
     }
 }
 
