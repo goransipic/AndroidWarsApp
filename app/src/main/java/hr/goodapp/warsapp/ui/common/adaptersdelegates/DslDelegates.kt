@@ -9,6 +9,7 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.MutableLiveData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import hr.goodapp.warsapp.R
+import hr.goodapp.warsapp.databinding.CardLayoutBinding
 import hr.goodapp.warsapp.databinding.EmptyDataBinding
 import hr.goodapp.warsapp.databinding.SetItemHeightBinding
 import hr.goodapp.warsapp.databinding.ThirdColumnItemBinding
@@ -24,12 +25,13 @@ fun twoRowAdapterDelegate(liveData: MutableLiveData<Event<Any>>) =
         }
 
         bind {
-
+            binding.textView.text = item.first
         }
     }
 
 data class ThreeRowItem(val first: String,
                         val second: String,
+                        val third: String,
                         val payload: Any? = null,
                         @DrawableRes val placeholder: Int = R.drawable.ic_launcher_background) :
     DisplayableItem {
@@ -76,6 +78,29 @@ fun itemHeightDelegate() =
 data class SetItemHeightItem(val height: Int = 10.px, val id : Long = 0L) : DisplayableItem {
     override fun getItemId(): Long {
         return id
+    }
+}
+
+fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<CardDelegateItem, DisplayableItem>(R.layout.card_layout){
+    val binding =  CardLayoutBinding.bind(itemView)
+    binding.root.setOnClickListener {
+        liveData.value = Event(item)
+    }
+
+    bind {
+        binding.cardLayoutEmbed.textView.text = item.first
+        binding.cardLayoutEmbed.textView4.text = item.second
+        binding.cardLayoutEmbed.imageView3.setImageResource(item.image)
+    }
+}
+
+data class CardDelegateItem(val first: String, val second: String, @DrawableRes val image: Int = R.drawable.rounded_background, val payload: Any? = null) : DisplayableItem {
+    override fun getItemId(): Long {
+        return first.hashCode().toLong()
+    }
+
+    override fun getItemHash(): Int {
+        return hashCode()
     }
 }
 

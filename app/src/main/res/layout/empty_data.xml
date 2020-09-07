@@ -10,7 +10,7 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/undraw_no_data"
+        android:drawableTop="@drawable/empty_state"
         android:textAppearance="?textAppearanceBody1"
         android:drawablePadding="8dp"
         android:gravity="center"

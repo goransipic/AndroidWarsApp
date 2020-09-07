@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="?listPreferredItemPaddingLeft"
+    tools:layout_marginHorizontal="16dp"
+    android:layout_height="?listPreferredItemHeight"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    tools:layout_height="120dp">
+
+    <include android:id="@+id/card_layout_embed" layout="@layout/card_layout_embed" />
+
+</androidx.cardview.widget.CardView>

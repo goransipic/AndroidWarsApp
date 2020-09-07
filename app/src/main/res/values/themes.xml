@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Final, top-level theme-->
+    <style name="Theme.WarsApp.DayNight" parent="Theme.WarsApp"/>
+
+    <style name="Theme.WarsApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
+
+        <!--System/Platform attributes-->
+        <item name="android:windowBackground">@color/grey100</item>
+    </style>
+
+</resources>
