@@ -109,8 +109,11 @@ fun Fragment.getProgressBar(): ProgressDialog {
 
 fun <T> Fragment.listenLiveData(
     liveData: LiveData<Resource<T>>,
-    onLoading: () -> Unit = { view?.findViewById<View>(R.id.loadingView)?.visibility = View.VISIBLE },
-    onFailure: (Throwable) -> Boolean = { false },
+    onLoading: () -> Unit = { view?.findViewById<View>(R.id.loadingView)?.visibility = View.VISIBLE
+                              view?.findViewById<View>(R.id.errorView)?.visibility = View.GONE},
+    onFailure: (Throwable) -> Boolean = {
+        view?.findViewById<View>(R.id.errorView)?.visibility = View.VISIBLE
+        false },
     onSuccess: (T) -> Unit
 ) {
     liveData.observe(
@@ -119,7 +122,8 @@ fun <T> Fragment.listenLiveData(
             when(it.state){
                 State.SUCCESS ->  {view?.findViewById<View>(R.id.loadingView)?.visibility = View.GONE
                                    onSuccess(it.value!!)}
-                State.FAILURE ->  onFailure(it.exception!!)
+                State.FAILURE ->  {view?.findViewById<View>(R.id.loadingView)?.visibility = View.GONE
+                                    onFailure(it.exception!!)}
                 State.LOADING ->  onLoading()}
         })
 }
