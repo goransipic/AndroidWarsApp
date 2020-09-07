@@ -18,6 +18,8 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        viewBinding.recyclerView
+
         viewModel.getPeople().observe(viewLifecycleOwner){
             Log.d("MainFragment", it.toString())
         }

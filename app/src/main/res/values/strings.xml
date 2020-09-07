@@ -11,4 +11,5 @@
     <string name="no_data_to_show">No Data to Show</string>
     <string name="generate_number">Generate Number</string>
     <string name="return_result">Return Result</string>
+    <string name="empty_text"><![CDATA[<string name=\"empty_teThere is nothing here]]></string>
 </resources>
