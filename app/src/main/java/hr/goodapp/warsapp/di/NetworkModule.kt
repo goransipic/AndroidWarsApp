@@ -3,13 +3,14 @@ package hr.goodapp.warsapp.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ApplicationComponent
 import hr.goodapp.warsapp.BuildConfig
 import hr.goodapp.warsapp.data.people.PeopleDataSource
 import hr.goodapp.warsapp.data.people.remote.PeopleDao
 import hr.goodapp.warsapp.data.people.remote.PeopleRemoteDataSource
-import hr.goodapp.warsapp.ui.common.*
+import hr.goodapp.warsapp.data.peopledetail.MovieDetailDataSource
+import hr.goodapp.warsapp.data.peopledetail.remote.MovieDetailDao
+import hr.goodapp.warsapp.data.peopledetail.remote.MovieDetailRemoteDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -48,8 +49,25 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    fun providePeopleDetailDataSource(okHttpClient: OkHttpClient ): MovieDetailDao {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(BuildConfig.API_URL_BASE)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(MovieDetailDao::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun providePeopleRemoteDataSource(peopleDao: PeopleDao): PeopleDataSource {
         return PeopleRemoteDataSource(peopleDao)
+    }
+
+    @Provides
+    @Singleton
+    fun providePeopleDetailRemoteDataSource(movieDetailDao: MovieDetailDao): MovieDetailDataSource {
+        return MovieDetailRemoteDataSource(movieDetailDao)
     }
 
     /*@Provides

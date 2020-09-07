@@ -1,9 +1,12 @@
-package hr.goodapp.warsapp.data.people.remote.networkdata
+package hr.goodapp.warsapp.data.people.remote.networkmodel
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class People(
+@Parcelize
+data class Result(
     @SerializedName("count")
     val count: Int?,
     @SerializedName("next")
@@ -11,5 +14,5 @@ data class People(
     @SerializedName("previous")
     val previous: String?,
     @SerializedName("results")
-    val results: List<Result>?
-)
+    val people: List<People>?
+) : Parcelable

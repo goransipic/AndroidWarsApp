@@ -54,7 +54,7 @@ data class SetItemHeightItem(val height: Int = 10.px, val id : Long = 0L) : Disp
 fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<CardDelegateItem, DisplayableItem>(R.layout.card_layout){
     val binding =  CardLayoutBinding.bind(itemView)
     binding.root.setOnClickListener {
-        liveData.value = Event(item)
+        liveData.value = Event(item.payload!!)
     }
 
     bind {
