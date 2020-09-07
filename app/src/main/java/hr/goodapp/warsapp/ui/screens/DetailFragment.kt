@@ -8,6 +8,7 @@ import hr.goodapp.warsapp.R
 import hr.goodapp.warsapp.databinding.DetailFragmentBinding
 import hr.goodapp.warsapp.ui.common.*
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.CardDelegateItem
+import hr.goodapp.warsapp.ui.common.adaptersdelegates.SetItemHeightItem
 import hr.goodapp.warsapp.ui.viewmodels.DetailViewModel
 import timber.log.Timber
 
@@ -22,7 +23,7 @@ class DetailFragment : BaseFragment(R.layout.detail_fragment) {
         val (adapter, _) = viewBinding.recyclerView.init()
 
         listenLiveData(viewModel.getPeopleDetail(args.PersonDetail)){ movies ->
-            adapter.submitList(movies.map { CardDelegateItem(it.title!!, "Episode: ${it.episodeId!!.humanFormat}" ) })
+            adapter.submitList(movies.map { CardDelegateItem(it.title!!, "Episode: ${it.episodeId!!.humanFormat}" ) }.flatMap { listOf(SetItemHeightItem()) + listOf(it) })
         }
     }
 
