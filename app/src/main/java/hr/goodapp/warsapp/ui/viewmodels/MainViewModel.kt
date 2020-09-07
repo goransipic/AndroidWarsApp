@@ -8,5 +8,6 @@ import hr.goodapp.warsapp.ui.common.launchLiveData
 class MainViewModel @ViewModelInject constructor(
     private val peopleDataSource: PeopleDataSource,
 ) : ViewModel()  {
-    fun getPeople() = launchLiveData { peopleDataSource.getListOfPeople() }
+
+   fun getPeople() = launchLiveData { peopleDataSource.getListOfPeople() }
 }
