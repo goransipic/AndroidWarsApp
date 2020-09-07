@@ -23,7 +23,8 @@ class DetailFragment : BaseFragment(R.layout.detail_fragment) {
         val (adapter, _) = viewBinding.recyclerView.init()
 
         listenLiveData(viewModel.getPeopleDetail(args.PersonDetail)){ movies ->
-            adapter.submitList(movies.map { CardDelegateItem(it.title!!, "Episode: ${it.episodeId!!.humanFormat}" ) }.flatMap { listOf(SetItemHeightItem()) + listOf(it) })
+            adapter.submitList(movies.map      { CardDelegateItem(it.title!!, "Episode: ${it.episodeId!!.humanFormat}" ) }
+                                     .flatMap  { listOf(SetItemHeightItem()) + listOf(it) })
         }
     }
 

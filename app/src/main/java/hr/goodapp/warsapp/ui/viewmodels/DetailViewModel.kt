@@ -10,6 +10,6 @@ class DetailViewModel @ViewModelInject constructor(
     private val movieDetailDataSource: MovieDetailDataSource,
 ) : ViewModel() {
 
-    fun getPeopleDetail(people: People) = launchLiveData { movieDetailDataSource.getPeopleDetail(people.films) }
+    fun getPeopleDetail(people: People) = launchLiveData { movieDetailDataSource.getPeopleDetail(people.films).sortedBy { it.episodeId } }
 
 }
