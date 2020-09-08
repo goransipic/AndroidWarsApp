@@ -18,4 +18,4 @@ This project brings to table set of best practices, tools, and solutions:
 
 # Screens
 
-![Image of Yaktocat](https://github.com/goransipic/AndroidWarsApp/blob/master/pictures/picture-1.png)
+![Main Screen](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-1.png)
