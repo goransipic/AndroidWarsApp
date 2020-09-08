@@ -1,4 +1,4 @@
-# Android warsApp
+# Android WarsApp
 
 WarsApp is a sample project that presents a modern, 2020 approach to Android application development with up to date tech-stack.
 
