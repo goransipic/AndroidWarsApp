@@ -1,6 +1,6 @@
-package hr.goodapp.warsapp.data.peopledetail.remote
+package hr.goodapp.warsapp.data.moviedetail.remote
 
-import hr.goodapp.warsapp.data.peopledetail.remote.networkmodel.MovieDetail
+import hr.goodapp.warsapp.data.moviedetail.remote.networkmodel.MovieDetail
 import retrofit2.http.GET
 import retrofit2.http.Url
 

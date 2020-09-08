@@ -1,7 +1,7 @@
-package hr.goodapp.warsapp.data.peopledetail.remote
+package hr.goodapp.warsapp.data.moviedetail.remote
 
-import hr.goodapp.warsapp.data.peopledetail.MovieDetailDataSource
-import hr.goodapp.warsapp.data.peopledetail.remote.networkmodel.MovieDetail
+import hr.goodapp.warsapp.data.moviedetail.MovieDetailDataSource
+import hr.goodapp.warsapp.data.moviedetail.remote.networkmodel.MovieDetail
 
 class MovieDetailRemoteDataSource (private val movieDetailDao: MovieDetailDao) : MovieDetailDataSource {
 

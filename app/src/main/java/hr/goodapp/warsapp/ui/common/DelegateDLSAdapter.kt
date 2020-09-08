@@ -6,7 +6,7 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import hr.goodapp.warsapp.ui.common.adaptersdelegates.*
 
 fun getDelegates(liveData: MutableLiveData<Event<Any>>)
-        = arrayOf( emptyDelegate(), itemHeightDelegate(), cardSignedDelegate(liveData))
+        = arrayOf( emptyDelegate(), itemHeightDelegate(), cardSignedDelegate(liveData), twoRowDelegate(), singleRowDelegate())
 
 fun getDSLAdapter(): DslEventAdapterResult {
 

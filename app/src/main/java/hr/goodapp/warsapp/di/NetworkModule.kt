@@ -8,9 +8,9 @@ import hr.goodapp.warsapp.BuildConfig
 import hr.goodapp.warsapp.data.people.PeopleDataSource
 import hr.goodapp.warsapp.data.people.remote.PeopleDao
 import hr.goodapp.warsapp.data.people.remote.PeopleRemoteDataSource
-import hr.goodapp.warsapp.data.peopledetail.MovieDetailDataSource
-import hr.goodapp.warsapp.data.peopledetail.remote.MovieDetailDao
-import hr.goodapp.warsapp.data.peopledetail.remote.MovieDetailRemoteDataSource
+import hr.goodapp.warsapp.data.moviedetail.MovieDetailDataSource
+import hr.goodapp.warsapp.data.moviedetail.remote.MovieDetailDao
+import hr.goodapp.warsapp.data.moviedetail.remote.MovieDetailRemoteDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

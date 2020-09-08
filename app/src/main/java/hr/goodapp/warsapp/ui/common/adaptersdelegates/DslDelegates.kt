@@ -10,9 +10,7 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.MutableLiveData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import hr.goodapp.warsapp.R
-import hr.goodapp.warsapp.databinding.CardLayoutBinding
-import hr.goodapp.warsapp.databinding.EmptyDataBinding
-import hr.goodapp.warsapp.databinding.SetItemHeightBinding
+import hr.goodapp.warsapp.databinding.*
 import hr.goodapp.warsapp.ui.common.Event
 import hr.goodapp.warsapp.ui.common.px
 
@@ -55,6 +53,29 @@ data class SetItemHeightItem(val height: Int = 10.px, val id: Long = 0L) : Displ
         return id
     }
 }
+
+fun twoRowDelegate() =
+    adapterDelegate<TwoRowItem, DisplayableItem>(R.layout.two_row) {
+        val binding = TwoRowBinding.bind(itemView)
+        bind {
+            binding.tvTitle.text = item.title
+            binding.tvSubtitle.text = item.subtitle
+            //frSIH.updatePadding(top = item.height)
+        }
+    }
+
+data class TwoRowItem(val title : String, val subtitle: String) : DisplayableItem
+
+fun singleRowDelegate() =
+    adapterDelegate<SingleRowItem, DisplayableItem>(R.layout.single_row) {
+        val binding = SingleRowBinding.bind(itemView)
+        bind {
+            binding.tvTitle.text = item.title
+            //frSIH.updatePadding(top = item.height)
+        }
+    }
+
+data class SingleRowItem(val title : String) : DisplayableItem
 
 fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<CardDelegateItem, DisplayableItem>(
     R.layout.card_layout

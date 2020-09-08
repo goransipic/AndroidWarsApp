@@ -1,4 +1,4 @@
-package hr.goodapp.warsapp.data.peopledetail.remote.networkmodel
+package hr.goodapp.warsapp.data.moviedetail.remote.networkmodel
 
 
 import com.google.gson.annotations.SerializedName

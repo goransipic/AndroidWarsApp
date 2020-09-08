@@ -6,4 +6,16 @@
     <string name="login">Login</string>
     <string name="english">Engleski</string>
     <string name="croatian">Hrvatski</string>
+    <string name="no_data_to_show">Ne postoje podaci</string>
+    <string name="generate_number">Generiraj broj</string>
+    <string name="return_result">VRati resultat</string>
+    <string name="empty_text">Ne postoje podaci</string>
+    <string name="please_wait">Molim pričekajte</string>
+    <string name="sorry_something_went_wrong">Nije moguće izvršiti radnju</string>
+    <string name="name">Ime:</string>
+    <string name="birth_year">Godina rođenja:</string>
+    <string name="gender">Spol:</string>
+    <string name="skin_color">Boja Kože:</string>
+    <string name="actor_details">Detalji glumca</string>
+    <string name="movies">Filmovi</string>
 </resources>

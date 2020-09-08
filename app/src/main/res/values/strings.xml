@@ -14,4 +14,10 @@
     <string name="empty_text">There is nothing here</string>
     <string name="please_wait">Please wait</string>
     <string name="sorry_something_went_wrong">Sorry something went wrong</string>
+    <string name="name">Name:</string>
+    <string name="birth_year">BirthYear:</string>
+    <string name="gender">Gender:</string>
+    <string name="skin_color">Skin Color:</string>
+    <string name="actor_details">Actor Details</string>
+    <string name="movies">Movies</string>
 </resources>
