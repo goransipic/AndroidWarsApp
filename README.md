@@ -13,5 +13,5 @@ This project brings to table set of best practices, tools, and solutions:
 * Android Jetpack
 * A single-activity architecture (Navigation component)
 * Reactive UI
-*Dependency Injection
-*Material design
+* Dependency Injection
+* Material design
