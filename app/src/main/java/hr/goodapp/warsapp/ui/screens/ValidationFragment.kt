@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -44,16 +45,7 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewBinding.views.login.setOnClickListener {
-            viewBinding.views.textInputLayout.error = null
-            val text = viewBinding.views.textInputLayout.editText?.text.toString()
-            viewBinding.views.textInputLayout.editText?.toogleKeyboardVisibilty(false)
-            if (viewModel.checkInput(text)){
-                if (!handler.hasMessages(HANDLER_ACTION)){
-                    handler.sendEmptyMessageDelayed(HANDLER_ACTION, 500)
-                }
-            }else{
-                viewBinding.views.textInputLayout.error = getString(R.string.wrong_input)
-            }
+            loginAction()
         }
 
         viewBinding.views.rng.setOnClickListener {
@@ -76,18 +68,20 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
             viewBinding.views.textInputLayout.isErrorEnabled = false
         }
 
+        viewBinding.views.textInputLayout.editText?.setOnEditorActionListener { v, actionId, event ->
+                return@setOnEditorActionListener when (actionId) {
+                    EditorInfo.IME_ACTION_DONE -> {
+                        loginAction()
+                        true
+                    }
+                    else -> false
+                }
+            }
+
         viewModel.refreshLanguage()
 
         listenForResult()
 
-    }
-
-    private fun navigateToMain() {
-        val snackbar = Snackbar
-            .make(requireView(), getString(R.string.sucess), Snackbar.LENGTH_SHORT)
-        snackbar.show()
-
-        findNavController().navigate(R.id.action_validationFragment_to_mainFragment)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -98,6 +92,27 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
         R.id.demo_login -> {navigateToMain()
                             true}
         else -> throw IllegalStateException("Not Allowed State")
+    }
+
+    private fun loginAction() {
+        viewBinding.views.textInputLayout.error = null
+        val text = viewBinding.views.textInputLayout.editText?.text.toString()
+        viewBinding.views.textInputLayout.editText?.toogleKeyboardVisibilty(false)
+        if (viewModel.checkInput(text)) {
+            if (!handler.hasMessages(HANDLER_ACTION)) {
+                handler.sendEmptyMessageDelayed(HANDLER_ACTION, 250)
+            }
+        } else {
+            viewBinding.views.textInputLayout.error = getString(R.string.wrong_input)
+        }
+    }
+
+    private fun navigateToMain() {
+        val snackbar = Snackbar
+            .make(requireView(), getString(R.string.sucess), Snackbar.LENGTH_SHORT)
+        snackbar.show()
+
+        findNavController().navigate(R.id.action_validationFragment_to_mainFragment)
     }
 
     private fun listenForResult() {
