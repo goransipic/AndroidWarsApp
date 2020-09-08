@@ -1,5 +1,5 @@
 <resources>
-    <string name="hint">Hint</string>
+    <string name="hint">Šifra</string>
     <string name="language">Jezik</string>
     <string name="rng">RNG</string>
     <string name="login">Login</string>

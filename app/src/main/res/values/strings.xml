@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">WarsApp</string>
-    <string name="hint">Hint</string>
+    <string name="hint">Password</string>
     <string name="language">Language</string>
     <string name="language_placeholder" translatable="false">-</string>
     <string name="rng">RNG</string>
