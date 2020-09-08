@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">AndroidWarsApp</string>
     <string name="hint">Hint</string>
     <string name="language">Jezik</string>
     <string name="rng">RNG</string>
@@ -18,4 +17,6 @@
     <string name="skin_color">Boja Kože:</string>
     <string name="actor_details">Detalji glumca</string>
     <string name="movies">Filmovi</string>
+    <string name="wrong_input">Krivi unos</string>
+    <string name="sucess">Uspješan Login!</string>
 </resources>

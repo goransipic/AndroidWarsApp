@@ -1,10 +1,12 @@
 package hr.goodapp.warsapp.ui.common
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -133,4 +135,13 @@ fun <T> Fragment.listenEventData(liveData: LiveData<Event<T>>, tempResult: (T) -
     liveData.observe(viewLifecycleOwner, EventObserver {
         tempResult(it)
     })
+}
+
+fun View.toogleKeyboardVisibilty(boolean: Boolean) {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    if (boolean) {
+        imm.showSoftInput(this, 0)
+    } else {
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
 }

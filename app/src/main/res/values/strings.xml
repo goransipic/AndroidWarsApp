@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidWarsApp</string>
+    <string name="app_name" translatable="false">WarsApp</string>
     <string name="hint">Hint</string>
     <string name="language">Language</string>
     <string name="language_placeholder" translatable="false">-</string>
@@ -20,4 +20,7 @@
     <string name="skin_color">Skin Color:</string>
     <string name="actor_details">Actor Details</string>
     <string name="movies">Movies</string>
+    <string name="wrong_input">Wrong Input</string>
+    <string name="sucess">Success Login!</string>
+    <string name="demo_login">Demo Login</string>
 </resources>
