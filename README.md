@@ -15,3 +15,7 @@ This project brings to table set of best practices, tools, and solutions:
 * Reactive UI
 * Dependency Injection
 * Material design
+
+# Screens
+
+![Image of Yaktocat](https://github.com/goransipic/AndroidWarsApp/blob/master/pictures/picture-1.png)
