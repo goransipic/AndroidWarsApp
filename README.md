@@ -18,7 +18,7 @@ This project brings to table set of best practices, tools, and solutions:
 
 # Screens
 
-![Main Screen](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-1.png)
-![Main Screen](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-2.png)
-![Main Screen](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-3.png)
-![Main Screen](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-4.png)
+![Screen 1](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-1.png) ![Screen 2](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-2.png)
+
+![Screen 3](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-3.png) ![Screen 4](https://github.com/goransipic/AndroidWarsApp/blob/master/images/picture-4.png)
+
