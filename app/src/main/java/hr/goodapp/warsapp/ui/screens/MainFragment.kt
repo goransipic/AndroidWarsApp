@@ -32,7 +32,7 @@ class MainFragment : BaseFragment(R.layout.main_fragment) {
     }
 
     private fun mapResult(people: Result) =
-        people.people!!.map { CardDelegateItem(it.name!!, it.height!!, payload = it) }
+        people.people!!.map { CardDelegateItem(it.name!!, "${it.height!!} cm", it.mass!!.toInt() , payload = it) }
             .flatMap { listOf(it) + listOf(SetItemHeightItem()) }
 
 }

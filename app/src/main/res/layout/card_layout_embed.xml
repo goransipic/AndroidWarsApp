@@ -12,16 +12,18 @@
     tools:layout_height="120dp"
     tools:showIn="@layout/card_layout">
 
-
-    <ImageView
-        android:id="@+id/image_view"
+    <TextView
+        android:id="@+id/text_round"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:gravity="center"
+        tools:text="Hello"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        android:background="@drawable/rounded_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rounded_background" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_view_first"
@@ -34,7 +36,7 @@
         android:textAppearance="?textAppearanceListItem"
         app:layout_constraintBottom_toTopOf="@+id/text_view_second"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintStart_toEndOf="@+id/image_view"
+        app:layout_constraintStart_toEndOf="@+id/text_round"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 

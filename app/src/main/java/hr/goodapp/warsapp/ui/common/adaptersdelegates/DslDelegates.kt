@@ -1,9 +1,11 @@
 package hr.goodapp.warsapp.ui.common.adaptersdelegates
 
+import android.graphics.Color
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.MutableLiveData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
@@ -11,9 +13,9 @@ import hr.goodapp.warsapp.R
 import hr.goodapp.warsapp.databinding.CardLayoutBinding
 import hr.goodapp.warsapp.databinding.EmptyDataBinding
 import hr.goodapp.warsapp.databinding.SetItemHeightBinding
-import hr.goodapp.warsapp.databinding.ThirdColumnItemBinding
 import hr.goodapp.warsapp.ui.common.Event
 import hr.goodapp.warsapp.ui.common.px
+
 
 fun emptyDelegate() =
     adapterDelegate<EmptyDataItem, DisplayableItem>(R.layout.empty_data) {
@@ -33,7 +35,10 @@ fun emptyDelegate() =
         }
     }
 
-data class EmptyDataItem(@StringRes val text : Int = R.string.empty_text, val centerEmptyView : Boolean = false ) : DisplayableItem
+data class EmptyDataItem(
+    @StringRes val text: Int = R.string.empty_text,
+    val centerEmptyView: Boolean = false
+) : DisplayableItem
 
 
 fun itemHeightDelegate() =
@@ -45,13 +50,15 @@ fun itemHeightDelegate() =
         }
     }
 
-data class SetItemHeightItem(val height: Int = 10.px, val id : Long = 0L) : DisplayableItem {
+data class SetItemHeightItem(val height: Int = 10.px, val id: Long = 0L) : DisplayableItem {
     override fun getItemId(): Long {
         return id
     }
 }
 
-fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<CardDelegateItem, DisplayableItem>(R.layout.card_layout){
+fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<CardDelegateItem, DisplayableItem>(
+    R.layout.card_layout
+){
     val binding =  CardLayoutBinding.bind(itemView)
     binding.root.setOnClickListener {
         liveData.value = Event(item.payload!!)
@@ -60,11 +67,28 @@ fun cardSignedDelegate(liveData: MutableLiveData<Event<Any>>) = adapterDelegate<
     bind {
         binding.cardLayoutEmbed.textViewFirst.text = item.first
         binding.cardLayoutEmbed.textViewSecond.text = item.second
-        binding.cardLayoutEmbed.imageView.setImageResource(item.image)
+        val background = binding.cardLayoutEmbed.textRound.background
+        val wrappedDrawable = DrawableCompat.wrap(background)
+        if(item.third in 1..49) {
+            DrawableCompat.setTint(wrappedDrawable, Color.GREEN)
+        }
+        if(item.third in 50..79) {
+            DrawableCompat.setTint(wrappedDrawable, Color.LTGRAY)
+        }
+        if(item.third > 80) {
+            DrawableCompat.setTint(wrappedDrawable, Color.RED)
+        }
+        binding.cardLayoutEmbed.textRound.text = "${item.third} kg"
     }
 }
 
-data class CardDelegateItem(val first: String, val second: String, @DrawableRes val image: Int = R.drawable.rounded_background, val payload: Any? = null) : DisplayableItem {
+data class CardDelegateItem(
+    val first: String,
+    val second: String,
+    val third: Int,
+    @DrawableRes val image: Int = R.drawable.rounded_background,
+    val payload: Any? = null
+) : DisplayableItem {
     override fun getItemId(): Long {
         return first.hashCode().toLong()
     }
