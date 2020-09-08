@@ -26,11 +26,15 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
 
     companion object {
         const val RETURN_RESULT: String = "RETURN_RESULT"
+        private const val HANDLER_ACTION = 1
     }
 
     private val viewModel  by viewModels<ValidationViewModel>()
     private val viewBinding by viewBinding(ValidationFragmentBinding::bind)
-    private val handler = Handler()
+    private val handler = Handler{ navigateToMain()
+                                   true }
+    val function =
+        {  }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +48,9 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
             val text = viewBinding.views.textInputLayout.editText?.text.toString()
             viewBinding.views.textInputLayout.editText?.toogleKeyboardVisibilty(false)
             if (viewModel.checkInput(text)){
-                navigateToMain()
+                if (!handler.hasMessages(HANDLER_ACTION)){
+                    handler.sendEmptyMessageDelayed(HANDLER_ACTION, 500)
+                }
             }else{
                 viewBinding.views.textInputLayout.error = getString(R.string.wrong_input)
             }
@@ -80,10 +86,8 @@ class ValidationFragment : BaseFragment(R.layout.validation_fragment) {
         val snackbar = Snackbar
             .make(requireView(), getString(R.string.sucess), Snackbar.LENGTH_SHORT)
         snackbar.show()
-        handler.postDelayed(
-            { findNavController().navigate(R.id.action_validationFragment_to_mainFragment) },
-            500
-        )
+
+        findNavController().navigate(R.id.action_validationFragment_to_mainFragment)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
