@@ -9,7 +9,7 @@ The goal of the project is to demonstrate best practices by using up to date tec
 This project brings to table set of best practices, tools, and solutions:
 
 * 100% Kotlin
-* Modern architecture (dynamic feature modules, Clean Architecture, Model-View-ViewModel, Model-View-Intent)
+* Modern architecture (Clean Architecture, Hybrid Model-View-Intent)
 * Android Jetpack
 * A single-activity architecture (Navigation component)
 * Reactive UI
